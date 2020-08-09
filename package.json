@@ -4,7 +4,7 @@
   "description": "A collection of AWS Lambda utilities",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --verbose"
   },
   "repository": {
     "type": "git",
@@ -15,5 +15,14 @@
   "bugs": {
     "url": "https://github.com/ErikMuir/lambda-utils/issues"
   },
-  "homepage": "https://github.com/ErikMuir/lambda-utils#readme"
+  "homepage": "https://github.com/ErikMuir/lambda-utils#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.10.5",
+    "@babel/core": "^7.11.1",
+    "@babel/preset-env": "^7.11.0",
+    "jest": "^26.2.2"
+  },
+  "dependencies": {
+    "core-js": "^3.6.5"
+  }
 }
