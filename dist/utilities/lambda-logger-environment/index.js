@@ -4,7 +4,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var _default = {
+const LambdaLoggerEnvironment = {
   lambdaContext: null,
   lambdaEvent: null,
 
@@ -13,7 +13,6 @@ var _default = {
   }
 
 };
-exports.default = _default;
 
 const getEnvOrDefault = (key, defaultVal) => process.env[key] === undefined ? defaultVal : process.env[key];
 
@@ -24,4 +23,7 @@ const getEnvOrThrow = key => {
 
   return process.env[key];
 };
+
+var _default = LambdaLoggerEnvironment;
+exports.default = _default;
 //# sourceMappingURL=index.js.map

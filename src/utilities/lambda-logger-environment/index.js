@@ -1,4 +1,4 @@
-export default {
+const LambdaLoggerEnvironment = {
   lambdaContext: null,
   lambdaEvent: null,
 
@@ -15,3 +15,5 @@ const getEnvOrThrow = key => {
   }
   return process.env[key];
 };
+
+export default LambdaLoggerEnvironment;

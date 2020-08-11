@@ -1,6 +1,6 @@
 import LambdaLogger from '../src/utilities/lambda-logger';
 import LogLevel from '../src/utilities/log-level';
-import LambdaEnvironment from '../src/utilities/lambda-environment';
+import LambdaLoggerEnvironment from '../src/utilities/lambda-logger-environment';
 
 describe('LambdaLogger', () => {
   let trace, debug, info, warn, error, logs = [];
@@ -9,8 +9,8 @@ describe('LambdaLogger', () => {
   const setLogLevel = logLevel => (process.env.LOG_LEVEL = logLevel);
 
   beforeAll(() => {
-    LambdaEnvironment.lambdaEvent = {};
-    LambdaEnvironment.lambdaContext = {};
+    LambdaLoggerEnvironment.lambdaEvent = {};
+    LambdaLoggerEnvironment.lambdaContext = {};
     trace = jest.spyOn(console, 'trace').mockImplementation(pushLog);
     debug = jest.spyOn(console, 'debug').mockImplementation(pushLog);
     info = jest.spyOn(console, 'info').mockImplementation(pushLog);
@@ -22,8 +22,8 @@ describe('LambdaLogger', () => {
     logs = [];
     jest.clearAllMocks();
     setLogLevel();
-    LambdaEnvironment.lambdaEvent = {};
-    LambdaEnvironment.lambdaContext = {};
+    LambdaLoggerEnvironment.lambdaEvent = {};
+    LambdaLoggerEnvironment.lambdaContext = {};
   });
 
   afterAll(() => {
@@ -119,35 +119,35 @@ describe('LambdaLogger', () => {
     });
 
     test('userId', () => {
-      LambdaEnvironment.lambdaEvent.userId = 'foobar';
+      LambdaLoggerEnvironment.lambdaEvent.userId = 'foobar';
       logger.info();
       const log = logs[0];
       expect(log.userId).toBe('foobar');
     });
 
     test('executionName', () => {
-      LambdaEnvironment.lambdaEvent.executionName = 'foobar';
+      LambdaLoggerEnvironment.lambdaEvent.executionName = 'foobar';
       logger.info();
       const log = logs[0];
       expect(log.executionName).toBe('foobar');
     });
 
     test('awsRequestId', () => {
-      LambdaEnvironment.lambdaContext.awsRequestId = 'foobar';
+      LambdaLoggerEnvironment.lambdaContext.awsRequestId = 'foobar';
       logger.info();
       const log = logs[0];
       expect(log.awsRequestId).toBe('foobar');
     });
 
     test('functionName', () => {
-      LambdaEnvironment.lambdaContext.functionName = 'foobar';
+      LambdaLoggerEnvironment.lambdaContext.functionName = 'foobar';
       logger.info();
       const log = logs[0];
       expect(log.functionName).toBe('foobar');
     });
 
     test('remainingTime', () => {
-      LambdaEnvironment.lambdaContext.getRemainingTimeInMillis = () => 5000;
+      LambdaLoggerEnvironment.lambdaContext.getRemainingTimeInMillis = () => 5000;
       logger.info();
       const log = logs[0];
       expect(log.remainingTime).toBe(5000);
