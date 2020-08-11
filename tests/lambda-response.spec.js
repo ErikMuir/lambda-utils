@@ -1,7 +1,7 @@
 import LambdaResponse from '../src/utilities/lambda-response';
 import Header from '../src/utilities/header';
 
-describe('LambdaResponse', () => {
+describe('Response', () => {
   const defaultStatusCode = 200;
   const defaultHeaders = {};
   const defaultBody = {};

@@ -1,5 +1,5 @@
 import LogLevel from '../log-level';
-import LambdaLoggerEnvironment from '../lambda-logger-environment';
+import LogEnv from '../log-env';
 
 export default class LambdaLogger {
   constructor(name) {
@@ -13,12 +13,12 @@ export default class LambdaLogger {
   error(...data) { this._log('error', data); }
 
   _log = (logType, data) => {
-    if (LogLevel[logType] < LogLevel[LambdaLoggerEnvironment.LOG_LEVEL]) {
+    if (LogLevel[logType] < LogLevel[LogEnv.logLevel]) {
       return;
     }
     
     const { message, error, categorizedData } = this._categorize(data);
-    const { lambdaContext, lambdaEvent } = LambdaLoggerEnvironment;
+    const { lambdaContext, lambdaEvent } = LogEnv;
 
     console[logType](
       JSON.stringify(

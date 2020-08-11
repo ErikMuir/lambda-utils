@@ -16,26 +16,26 @@ Object.keys(_header).forEach(function (key) {
   });
 });
 
-var _lambdaEnvironment = require("./lambda-environment");
+var _loggerEnv = require("./logger-env");
 
-Object.keys(_lambdaEnvironment).forEach(function (key) {
+Object.keys(_loggerEnv).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
   Object.defineProperty(exports, key, {
     enumerable: true,
     get: function () {
-      return _lambdaEnvironment[key];
+      return _loggerEnv[key];
     }
   });
 });
 
-var _lambdaLogger = require("./lambda-logger");
+var _logger = require("./logger");
 
-Object.keys(_lambdaLogger).forEach(function (key) {
+Object.keys(_logger).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
   Object.defineProperty(exports, key, {
     enumerable: true,
     get: function () {
-      return _lambdaLogger[key];
+      return _logger[key];
     }
   });
 });

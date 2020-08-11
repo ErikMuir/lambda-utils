@@ -4,13 +4,15 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-const LogLevel = {
-  trace: 10,
-  debug: 20,
-  info: 30,
-  warn: 40,
-  error: 50
+const LogEnv = {
+  lambdaContext: null,
+  lambdaEvent: null,
+
+  get logLevel() {
+    return process.env.LOG_LEVEL || 'info';
+  }
+
 };
-var _default = LogLevel;
+var _default = LogEnv;
 exports.default = _default;
 //# sourceMappingURL=index.js.map
