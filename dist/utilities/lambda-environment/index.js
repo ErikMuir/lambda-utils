@@ -9,7 +9,7 @@ var _default = {
   lambdaEvent: null,
 
   get LOG_LEVEL() {
-    return getEnvOrDefault('LOG_LEVEL', 'trace');
+    return getEnvOrDefault('LOG_LEVEL', 'info');
   }
 
 };

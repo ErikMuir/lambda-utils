@@ -10,8 +10,8 @@ describe('LambdaEnvironment', () => {
       delete process.env.LOG_LEVEL;
     });
 
-    test('defaults to trace', () => {
-      const expected = 'trace';
+    test('defaults to info', () => {
+      const expected = 'info';
       const actual = LambdaEnvironment.LOG_LEVEL;
       expect(actual).toBe(expected);
     });
