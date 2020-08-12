@@ -9,11 +9,32 @@ var _header = _interopRequireDefault(require("../header"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 class LambdaResponse {
   constructor() {
+    _defineProperty(this, "_getBody", () => {
+      if (this._body === null || this._body === undefined) {
+        return null;
+      } else if (this._isBase64Encoded) {
+        return this._body;
+      } else {
+        return JSON.stringify(this._body);
+      }
+    });
+
+    this._isBase64Encoded = false;
     this._statusCode = 200;
     this._headers = {};
-    this._body = {};
+    this._body = null;
+  }
+
+  get isBase64Encoded() {
+    return this._isBase64Encoded;
+  }
+
+  set isBase64Encoded(newValue) {
+    this._isBase64Encoded = !!newValue;
   }
 
   get statusCode() {
@@ -48,9 +69,10 @@ class LambdaResponse {
 
   build() {
     return {
+      isBase64Encoded: this._isBase64Encoded,
       statusCode: this._statusCode,
       headers: this._headers,
-      body: JSON.stringify(this._body)
+      body: this._getBody()
     };
   }
 

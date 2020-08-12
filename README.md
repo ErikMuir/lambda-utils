@@ -40,13 +40,7 @@ If the above function were invoked like `myFunction(42, true)`, it would produce
     "arg1": 42,
     "arg2": true
   },
-  // If the event and context properties had been set on LogEnv,
-  // then the logs will contain the following fields as well
-  "userId": "user-id",
-  "executionName": "execution-name",
-  "awsRequestId": "aws-request-id",
-  "functionName": "aws-lambda-function-name",
-  "remainingTime": 2974 // milliseconds left before timeout
+  // ...and event/context properties, if they were set on LogEnv
 }
 ```
 
@@ -83,18 +77,15 @@ const header = new Header('key', 'value');
 ```
 
 #### LambdaResponse
-When you new up a LambdaResponse the status code defaults to 200, and the headers and body default to empty objects.
+The LambdaResponse class has the following properties: `statusCode`, `isBase64Encoded`, `body`, and `headers`. The first three properties have normal getters and setters, but headers must be added one at a time via the `addHeader` method. _Note: Adding a header with the same key as an existing header will result in the original value being replaced with the new value._
 ``` javascript
 const { LambdaResponse, Header } = require('@erikmuir/lambda-utils');
 
 const response = new LambdaResponse();
-```
-The status code and body have normal getters and setters, but headers must be added one at a time via the `addHeader` method. _Note: Adding a header with the same key as an existing header will result in the original value being replaced with the new value._
-``` javascript
-const response = new LambdaResponse();
 
-response.statusCode = 201;
-response.body = { message: 'Successfully created' };
+response.statusCode = 200;
+response.isBase64Encoded = false;
+response.body = { message: 'Success!' };
 
 var header1 = new Header('key1', 'value1');
 var header2 = new Header('key2', 'value2');
@@ -102,18 +93,18 @@ var header2 = new Header('key2', 'value2');
 response.addHeader(header1);
 response.addHeader(header2);
 ```
-When you're ready to return the response, you'll need to call the `.build()` method.
+When you're ready to return the response, you'll need to call the `.build()` method. This builds the response object that AWS Lambda expects to receive. _Note: If `isBase64Encoded` is false, the body will be JSON stringified._
 ``` javascript
 return response.build();
 ```
-This will stringify the body and build the response object that AWS Lambda expects to receive:
+This will return the following object:
 ``` json
 {
-  "statusCode": 201,
+  "statusCode": 200,
   "headers": {
     "key1": "value1",
     "key2": "value2"
   },
-  "body": "{\"message\":\"Successfully created\"}"
+  "body": "{\"message\":\"Success!\"}"
 }
 ```

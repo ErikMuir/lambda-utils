@@ -3,14 +3,19 @@ import Header from '../src/utilities/header';
 
 describe('Response', () => {
   const defaultStatusCode = 200;
+  const defaultIsBase64Encoded = false;
   const defaultHeaders = {};
-  const defaultBody = {};
+  const defaultBody = null;
 
   describe('constructor', () => {
     const actual = new LambdaResponse();
 
     test('sets default statusCode', () => {
       expect(actual.statusCode).toBe(defaultStatusCode);
+    });
+
+    test('sets default isBase64Encoded', () => {
+      expect(actual.isBase64Encoded).toBe(defaultIsBase64Encoded);
     });
 
     test('sets default headers', () => {
@@ -23,7 +28,11 @@ describe('Response', () => {
   });
 
   describe('addHeader method', () => {
-    const lambdaResponse = new LambdaResponse();
+    let lambdaResponse;
+
+    beforeEach(() => {
+      lambdaResponse = new LambdaResponse();
+    });
 
     test('appends to headers', () => {
       lambdaResponse.addHeader(new Header('foo', 'bar'));
@@ -31,6 +40,14 @@ describe('Response', () => {
 
       lambdaResponse.addHeader(new Header('baz', 42));
       expect(lambdaResponse.headers).toEqual({ foo: 'bar', baz: 42 });
+    });
+
+    test('overwrites header with same key', () => {
+      lambdaResponse.addHeader(new Header('foo', 'bar'));
+      expect(lambdaResponse.headers).toEqual({ foo: 'bar' });
+
+      lambdaResponse.addHeader(new Header('foo', 42));
+      expect(lambdaResponse.headers).toEqual({ foo: 42 });
     });
 
     test('throws error when header is not of type Header', () => {
@@ -47,40 +64,64 @@ describe('Response', () => {
     describe('when no changes have been made', () => {
       const actual = new LambdaResponse().build();
 
-      test('returns object with default statusCode', () => {
+      test('statusCode', () => {
         expect(actual.statusCode).toBe(defaultStatusCode);
       });
 
-      test('returns object with default headers', () => {
+      test('isBase64Encoded', () => {
+        expect(actual.isBase64Encoded).toBe(defaultIsBase64Encoded);
+      });
+
+      test('headers', () => {
         expect(actual.headers).toEqual(defaultHeaders);
       });
 
-      test('returns object with default body', () => {
-        expect(actual.body).toEqual(JSON.stringify(defaultBody));
+      test('body', () => {
+        expect(actual.body).toEqual(defaultBody);
       });
     });
 
     describe('when changes have been made', () => {
-      const lambdaResponse = new LambdaResponse();
+      let lambdaResponse;
 
-      test('returns object with expected statusCode', () => {
+      beforeEach(() => {
+        lambdaResponse = new LambdaResponse();
+      });
+
+      test('statusCode', () => {
         const statusCode = 404;
         lambdaResponse.statusCode = statusCode;
         const actual = lambdaResponse.build();
         expect(actual.statusCode).toBe(statusCode);
       });
 
-      test('returns object with expected headers', () => {
+      test('isBase64Encoded', () => {
+        const isBase64Encoded = true;
+        lambdaResponse.isBase64Encoded = isBase64Encoded;
+        const actual = lambdaResponse.build();
+        expect(actual.isBase64Encoded).toBe(isBase64Encoded);
+      });
+
+      test('headers', () => {
         lambdaResponse.addHeader(new Header('foo', 'bar'));
         const actual = lambdaResponse.build();
         expect(actual.headers).toEqual({ foo: 'bar' });
       });
 
-      test('returns object with expected body', () => {
+      test('body when isBase64Encoded is false', () => {
         const body = { foo: 'bar' };
         lambdaResponse.body = body;
+        lambdaResponse.isBase64Encoded = false;
         const actual = lambdaResponse.build();
         expect(actual.body).toBe(JSON.stringify(body));
+      });
+
+      test('body when isBase64Encoded is true', () => {
+        const body = "some-base-64-encoded-string";
+        lambdaResponse.body = body;
+        lambdaResponse.isBase64Encoded = true;
+        const actual = lambdaResponse.build();
+        expect(actual.body).toBe(body);
       });
     });
   });
