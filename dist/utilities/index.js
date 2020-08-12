@@ -16,26 +16,14 @@ Object.keys(_header).forEach(function (key) {
   });
 });
 
-var _loggerEnv = require("./logger-env");
+var _lambdaLogger = require("./lambda-logger");
 
-Object.keys(_loggerEnv).forEach(function (key) {
+Object.keys(_lambdaLogger).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
   Object.defineProperty(exports, key, {
     enumerable: true,
     get: function () {
-      return _loggerEnv[key];
-    }
-  });
-});
-
-var _logger = require("./logger");
-
-Object.keys(_logger).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function () {
-      return _logger[key];
+      return _lambdaLogger[key];
     }
   });
 });
@@ -48,6 +36,18 @@ Object.keys(_lambdaResponse).forEach(function (key) {
     enumerable: true,
     get: function () {
       return _lambdaResponse[key];
+    }
+  });
+});
+
+var _logEnv = require("./log-env");
+
+Object.keys(_logEnv).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function () {
+      return _logEnv[key];
     }
   });
 });

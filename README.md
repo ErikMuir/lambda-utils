@@ -1,6 +1,8 @@
 # lambda-utils
 AWS Lambda utilities for NodeJS
 
+![npm (scoped)](https://img.shields.io/npm/v/@erikmuir/lambda-utils)
+
 ## Installation
 ```
 $ npm install @erikmuir/lambda-utils --save
