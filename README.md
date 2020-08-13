@@ -1,7 +1,14 @@
 # lambda-utils
+
 AWS Lambda utilities for NodeJS
 
 ![npm (scoped)](https://img.shields.io/npm/v/@erikmuir/lambda-utils)
+&nbsp;
+![npm bundle size (scoped)](https://img.shields.io/bundlephobia/min/@erikmuir/lambda-utils)
+&nbsp;
+![NPM](https://img.shields.io/npm/l/@erikmuir/lambda-utils)
+&nbsp;
+![GitHub last commit](https://img.shields.io/github/last-commit/erikmuir/lambda-utils)
 
 ## Installation
 ```
