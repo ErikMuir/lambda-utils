@@ -4,6 +4,8 @@ AWS Lambda utilities for NodeJS
 
 ![npm (scoped)](https://img.shields.io/npm/v/@erikmuir/lambda-utils)
 &nbsp;
+![npm](https://img.shields.io/npm/dt/@erikmuir/lambda-utils)
+&nbsp;
 ![npm bundle size (scoped)](https://img.shields.io/bundlephobia/min/@erikmuir/lambda-utils)
 &nbsp;
 ![NPM](https://img.shields.io/npm/l/@erikmuir/lambda-utils)
