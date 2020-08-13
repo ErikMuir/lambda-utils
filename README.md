@@ -11,6 +11,10 @@ AWS Lambda utilities for NodeJS
 ![NPM](https://img.shields.io/npm/l/@erikmuir/lambda-utils)
 &nbsp;
 ![GitHub last commit](https://img.shields.io/github/last-commit/erikmuir/lambda-utils)
+&nbsp;
+![Snyk Vulnerabilities for npm package](https://img.shields.io/snyk/vulnerabilities/npm/@erikmuir/lambda-utils)
+&nbsp;
+![CodeFactor Grade](https://img.shields.io/codefactor/grade/github/erikmuir/lambda-utils)
 
 ## Installation
 ```

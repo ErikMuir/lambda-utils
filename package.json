@@ -3,6 +3,13 @@
   "version": "0.1.2",
   "description": "A collection of AWS Lambda utilities",
   "main": "./dist/index.js",
+  "keywords": [
+    "aws",
+    "lambda",
+    "node",
+    "logger",
+    "structured logging"
+  ],
   "scripts": {
     "build": "rm -rf ./dist && babel ./src --out-dir ./dist --source-maps --copy-files",
     "test": "jest ./tests"
