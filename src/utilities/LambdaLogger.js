@@ -1,5 +1,5 @@
-import LogLevel from '../log-level';
-import LogEnv from '../log-env';
+import LogLevel from './LogLevel';
+import LogEnv from './LogEnv';
 
 export default class LambdaLogger {
   constructor(name) {

@@ -1,6 +1,6 @@
-import LambdaLogger from '../src/utilities/lambda-logger';
-import LogLevel from '../src/utilities/log-level';
-import LogEnv from '../src/utilities/log-env';
+import LambdaLogger from '../../src/utilities/LambdaLogger';
+import LogLevel from '../../src/utilities/LogLevel';
+import LogEnv from '../../src/utilities/LogEnv';
 
 describe('LambdaLogger', () => {
   let trace, debug, info, warn, error, logs = [];

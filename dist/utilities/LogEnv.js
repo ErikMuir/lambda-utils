@@ -15,4 +15,4 @@ const LogEnv = {
 };
 var _default = LogEnv;
 exports.default = _default;
-//# sourceMappingURL=index.js.map
+//# sourceMappingURL=LogEnv.js.map

@@ -5,9 +5,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _logLevel = _interopRequireDefault(require("../log-level"));
+var _LogLevel = _interopRequireDefault(require("./LogLevel"));
 
-var _logEnv = _interopRequireDefault(require("../log-env"));
+var _LogEnv = _interopRequireDefault(require("./LogEnv"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -16,7 +16,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 class LambdaLogger {
   constructor(name) {
     _defineProperty(this, "_log", (logType, data) => {
-      if (_logLevel.default[logType] < _logLevel.default[_logEnv.default.logLevel]) {
+      if (_LogLevel.default[logType] < _LogLevel.default[_LogEnv.default.logLevel]) {
         return;
       }
 
@@ -29,7 +29,7 @@ class LambdaLogger {
       const {
         lambdaContext,
         lambdaEvent
-      } = _logEnv.default;
+      } = _LogEnv.default;
       console[logType](JSON.stringify({
         time: new Date().toISOString(),
         level: logType,
@@ -106,4 +106,4 @@ class LambdaLogger {
 }
 
 exports.default = LambdaLogger;
-//# sourceMappingURL=index.js.map
+//# sourceMappingURL=LambdaLogger.js.map

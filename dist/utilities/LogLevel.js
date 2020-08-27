@@ -13,4 +13,4 @@ const LogLevel = {
 };
 var _default = LogLevel;
 exports.default = _default;
-//# sourceMappingURL=index.js.map
+//# sourceMappingURL=LogLevel.js.map

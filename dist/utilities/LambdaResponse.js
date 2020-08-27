@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _header = _interopRequireDefault(require("../header"));
+var _Header = _interopRequireDefault(require("./Header"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -58,7 +58,7 @@ class LambdaResponse {
   }
 
   addHeader(header) {
-    const isHeader = header instanceof _header.default;
+    const isHeader = header instanceof _Header.default;
 
     if (!isHeader) {
       throw new TypeError('header must be of type Header');
@@ -79,4 +79,4 @@ class LambdaResponse {
 }
 
 exports.default = LambdaResponse;
-//# sourceMappingURL=index.js.map
+//# sourceMappingURL=LambdaResponse.js.map

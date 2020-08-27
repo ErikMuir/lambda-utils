@@ -1,5 +1,5 @@
-import LambdaResponse from '../src/utilities/lambda-response';
-import Header from '../src/utilities/header';
+import LambdaResponse from '../../src/utilities/LambdaResponse';
+import Header from '../../src/utilities/Header';
 
 describe('Response', () => {
   const defaultStatusCode = 200;

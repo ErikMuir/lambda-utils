@@ -1,6 +1,6 @@
 {
   "name": "@erikmuir/lambda-utils",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "A collection of AWS Lambda utilities",
   "main": "./dist/index.js",
   "keywords": [

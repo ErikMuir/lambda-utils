@@ -1,4 +1,4 @@
-import LogEnv from '../src/utilities/log-env';
+import LogEnv from '../../src/utilities/LogEnv';
 
 describe('LogEnv', () => {
   describe('LOG_LEVEL', () => {

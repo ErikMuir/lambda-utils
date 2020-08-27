@@ -31,7 +31,7 @@ $ npm install @erikmuir/lambda-utils --save
 - [Header](#header)
 - [LambdaResponse](#lambdaresponse)
 
-#### LambdaLogger
+### LambdaLogger
 LambdaLogger exposes five logging methods: `trace`, `debug`, `info`, `warn`, and `error`, all of which respect the current log level. So, for example, if the current log level is "info", then a call to `trace()` or `debug()` would not actually log anything.
 
 The LambdaLogger also provides structured logging for your AWS Lambda functions, which allows you to more easily query your logs in tools like CloudWatch Log Insights, or even third-party tools like Splunk. This enables you to create insightful dashboards that give visibility into your distributed, serverless applications.
@@ -59,7 +59,7 @@ If the above function were invoked like `myFunction(42, true)`, it would produce
 }
 ```
 
-#### LogLevel
+### LogLevel
 This is an enumeration consisting of all the available log levels. Their values are used when implementing a logging threshhold. Each log level has a corresponding method on the LambdaLogger class.
 
 | Level | Value |
@@ -70,7 +70,7 @@ This is an enumeration consisting of all the available log levels. Their values 
 | warn  | 40    |
 | error | 50    |
 
-#### LogEnv
+### LogEnv
 This is a singleton that is used by the LambdaLogger. The first thing you should do in your function's handler is to set the event and context properties so that the structured logs can have access to the info contained in them.
 ``` javascript
 const { LogEnv } = require('@erikmuir/lambda-utils');
@@ -83,7 +83,7 @@ exports.handler = async function (event, context) {
 ```
 The LambdaLogger also uses the LogEnv singleton to get the current log level, however it cannot be set directly. It tries to get the value of an environment variable called `LOG_LEVEL`. If it doesn't exist, it will default to `info`.
 
-#### Header
+### Header
 The Header class is used to create key/value pairs to be used as headers in a LambdaResponse. The constructor requires both a key and a value. The key must be a string, and the value must be a string, number, or boolean. If either of the arguments are invalid it will throw a `TypeError`.
 ``` javascript
 const { Header } = require('@erikmuir/lambda-utils');
@@ -91,7 +91,7 @@ const { Header } = require('@erikmuir/lambda-utils');
 const header = new Header('key', 'value');
 ```
 
-#### LambdaResponse
+### LambdaResponse
 The LambdaResponse class has the following properties: `statusCode`, `isBase64Encoded`, `body`, and `headers`. The first three properties have normal getters and setters, but headers must be added one at a time via the `addHeader` method. _Note: Adding a header with the same key as an existing header will result in the original value being replaced with the new value._
 ``` javascript
 const { LambdaResponse, Header } = require('@erikmuir/lambda-utils');
