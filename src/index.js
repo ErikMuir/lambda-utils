@@ -1,4 +1,4 @@
-import Header from './utilities/Header';
+import Header from '@erikmuir/node-utils';
 import LambdaLogger from './utilities/LambdaLogger';
 import LambdaResponse from './utilities/LambdaResponse';
 import LogEnv from './utilities/LogEnv';

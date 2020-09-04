@@ -5,9 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _Header = _interopRequireDefault(require("./Header"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _nodeUtils = require("@erikmuir/node-utils");
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -25,7 +23,7 @@ class LambdaResponse {
 
     this._isBase64Encoded = false;
     this._statusCode = 200;
-    this._headers = {};
+    this._headers = new _nodeUtils.PrimitiveMap();
     this._body = null;
   }
 
@@ -58,20 +56,20 @@ class LambdaResponse {
   }
 
   addHeader(header) {
-    const isHeader = header instanceof _Header.default;
+    const isHeader = header instanceof _nodeUtils.Header;
 
     if (!isHeader) {
       throw new TypeError('header must be of type Header');
     }
 
-    this._headers[header.key] = header.value;
+    this._headers.set(header);
   }
 
   build() {
     return {
       isBase64Encoded: this._isBase64Encoded,
       statusCode: this._statusCode,
-      headers: this._headers,
+      headers: this._headers.toObject(),
       body: this._getBody()
     };
   }

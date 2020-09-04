@@ -1,10 +1,10 @@
 import LambdaResponse from '../../src/utilities/LambdaResponse';
-import Header from '../../src/utilities/Header';
+import { Header, PrimitiveMap, expectError } from '@erikmuir/node-utils';
 
 describe('Response', () => {
   const defaultStatusCode = 200;
   const defaultIsBase64Encoded = false;
-  const defaultHeaders = {};
+  const defaultHeaders = new PrimitiveMap();
   const defaultBody = null;
 
   describe('constructor', () => {
@@ -36,27 +36,27 @@ describe('Response', () => {
 
     test('appends to headers', () => {
       lambdaResponse.addHeader(new Header('foo', 'bar'));
-      expect(lambdaResponse.headers).toEqual({ foo: 'bar' });
+      expect(lambdaResponse.headers.toObject()).toEqual({ foo: 'bar' });
 
       lambdaResponse.addHeader(new Header('baz', 42));
-      expect(lambdaResponse.headers).toEqual({ foo: 'bar', baz: 42 });
+      expect(lambdaResponse.headers.toObject()).toEqual({ foo: 'bar', baz: 42 });
     });
 
     test('overwrites header with same key', () => {
       lambdaResponse.addHeader(new Header('foo', 'bar'));
-      expect(lambdaResponse.headers).toEqual({ foo: 'bar' });
+      expect(lambdaResponse.headers.toObject()).toEqual({ foo: 'bar' });
 
       lambdaResponse.addHeader(new Header('foo', 42));
-      expect(lambdaResponse.headers).toEqual({ foo: 42 });
+      expect(lambdaResponse.headers.toObject()).toEqual({ foo: 42 });
     });
 
     test('throws error when header is not of type Header', () => {
-      try {
-        lambdaResponse.addHeader({});
-      } catch (e) {
+      const action = () => lambdaResponse.addHeader({});
+      const assertions = e => {
         expect(e instanceof TypeError).toBe(true);
         expect(e.message).toBe('header must be of type Header');
-      }
+      };
+      expectError(action, assertions);
     });
   });
 
@@ -73,7 +73,7 @@ describe('Response', () => {
       });
 
       test('headers', () => {
-        expect(actual.headers).toEqual(defaultHeaders);
+        expect(actual.headers).toEqual(defaultHeaders.toObject());
       });
 
       test('body', () => {

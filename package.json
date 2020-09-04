@@ -1,6 +1,6 @@
 {
   "name": "@erikmuir/lambda-utils",
-  "version": "0.1.3",
+  "version": "0.2.0",
   "description": "A collection of AWS Lambda utilities",
   "main": "./dist/index.js",
   "keywords": [
@@ -24,6 +24,9 @@
     "url": "https://github.com/ErikMuir/lambda-utils/issues"
   },
   "homepage": "https://github.com/ErikMuir/lambda-utils#readme",
+  "dependencies": {
+    "@erikmuir/node-utils": "0.1.0"
+  },
   "devDependencies": {
     "@babel/cli": "^7.10.5",
     "@babel/core": "^7.11.1",

@@ -1,10 +1,10 @@
-import Header from './Header';
+import { Header, PrimitiveMap } from '@erikmuir/node-utils';
 
 export default class LambdaResponse {
   constructor() {
     this._isBase64Encoded = false;
     this._statusCode = 200;
-    this._headers = {};
+    this._headers = new PrimitiveMap();
     this._body = null;
   }
 
@@ -23,14 +23,14 @@ export default class LambdaResponse {
     if (!isHeader) {
       throw new TypeError('header must be of type Header');
     }
-    this._headers[header.key] = header.value;
+    this._headers.set(header);
   }
 
   build() {
     return {
       isBase64Encoded: this._isBase64Encoded,
       statusCode: this._statusCode,
-      headers: this._headers,
+      headers: this._headers.toObject(),
       body: this._getBody(),
     };
   }
