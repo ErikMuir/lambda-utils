@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 Object.defineProperty(exports, "Header", {
   enumerable: true,
   get: function () {
-    return _Header.default;
+    return _nodeUtils.default;
   }
 });
 Object.defineProperty(exports, "LambdaLogger", {
@@ -34,7 +34,7 @@ Object.defineProperty(exports, "LogLevel", {
   }
 });
 
-var _Header = _interopRequireDefault(require("./utilities/Header"));
+var _nodeUtils = _interopRequireDefault(require("@erikmuir/node-utils"));
 
 var _LambdaLogger = _interopRequireDefault(require("./utilities/LambdaLogger"));
 
