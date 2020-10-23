@@ -28,7 +28,6 @@ $ npm install @erikmuir/lambda-utils --save
 - [LambdaLogger](#lambdalogger)
 - [LogLevel](#loglevel)
 - [LogEnv](#logenv)
-- [Header](#header)
 - [LambdaResponse](#lambdaresponse)
 
 ### LambdaLogger
@@ -82,14 +81,6 @@ exports.handler = async function (event, context) {
 }
 ```
 The LambdaLogger also uses the LogEnv singleton to get the current log level, however it cannot be set directly. It tries to get the value of an environment variable called `LOG_LEVEL`. If it doesn't exist, it will default to `info`.
-
-### Header
-The Header class is used to create key/value pairs to be used as headers in a LambdaResponse. The constructor requires both a key and a value. The key must be a string, and the value must be a string, number, or boolean. If either of the arguments are invalid it will throw a `TypeError`.
-``` javascript
-const { Header } = require('@erikmuir/lambda-utils');
-
-const header = new Header('key', 'value');
-```
 
 ### LambdaResponse
 The LambdaResponse class has the following properties: `statusCode`, `isBase64Encoded`, `body`, and `headers`. The first three properties have normal getters and setters, but headers must be added one at a time via the `addHeader` method. _Note: Adding a header with the same key as an existing header will result in the original value being replaced with the new value._
