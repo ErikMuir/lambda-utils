@@ -85,7 +85,8 @@ The LambdaLogger also uses the LogEnv singleton to get the current log level, ho
 ### LambdaResponse
 The LambdaResponse class has the following properties: `statusCode`, `isBase64Encoded`, `body`, and `headers`. The first three properties have normal getters and setters, but headers must be added one at a time via the `addHeader` method. _Note: Adding a header with the same key as an existing header will result in the original value being replaced with the new value._
 ``` javascript
-const { LambdaResponse, Header } = require('@erikmuir/lambda-utils');
+const { Header } = require('@erikmuir/node-utils');
+const { LambdaResponse } = require('@erikmuir/lambda-utils');
 
 const response = new LambdaResponse();
 
