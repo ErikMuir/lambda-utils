@@ -9,8 +9,7 @@ describe('LambdaLogger', () => {
   const setLogLevel = logLevel => (process.env.LOG_LEVEL = logLevel);
 
   beforeAll(() => {
-    LogEnv.lambdaEvent = {};
-    LogEnv.lambdaContext = {};
+    LogEnv.initializeLambdaEnvironment({ event: {}, context: {}});
     trace = jest.spyOn(console, 'trace').mockImplementation(pushLog);
     debug = jest.spyOn(console, 'debug').mockImplementation(pushLog);
     info = jest.spyOn(console, 'info').mockImplementation(pushLog);
@@ -22,8 +21,7 @@ describe('LambdaLogger', () => {
     logs = [];
     jest.clearAllMocks();
     setLogLevel();
-    LogEnv.lambdaEvent = {};
-    LogEnv.lambdaContext = {};
+    LogEnv.initializeLambdaEnvironment({ event: {}, context: {} });
   });
 
   afterAll(() => {
