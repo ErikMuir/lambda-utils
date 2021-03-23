@@ -4,7 +4,7 @@ const LambdaResponse = require('./utilities/LambdaResponse');
 const LogEnv = require('./utilities/LogEnv');
 const LogLevel = require('./utilities/LogLevel');
 
-export {
+module.exports = {
   Header,
   LambdaLogger,
   LambdaResponse,
