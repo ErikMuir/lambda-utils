@@ -1,7 +1,7 @@
-import LogLevel from './LogLevel';
-import LogEnv from './LogEnv';
+const LogLevel = require('./LogLevel');
+const LogEnv = require('./LogEnv');
 
-export default class LambdaLogger {
+module.exports = class LambdaLogger {
   constructor(name) {
     this.name = name;
   }

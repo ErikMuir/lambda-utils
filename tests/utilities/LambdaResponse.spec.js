@@ -1,5 +1,5 @@
-import LambdaResponse from '../../src/utilities/LambdaResponse';
-import { Header, PrimitiveMap, expectError } from '@erikmuir/node-utils';
+const LambdaResponse = require('../../src/utilities/LambdaResponse');
+const { Header, PrimitiveMap, testUtils: { expectError } } = require('@erikmuir/node-utils');
 
 describe('Response', () => {
   const defaultStatusCode = 200;

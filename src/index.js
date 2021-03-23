@@ -1,8 +1,8 @@
-import Header from '@erikmuir/node-utils';
-import LambdaLogger from './utilities/LambdaLogger';
-import LambdaResponse from './utilities/LambdaResponse';
-import LogEnv from './utilities/LogEnv';
-import LogLevel from './utilities/LogLevel';
+const Header = require('@erikmuir/node-utils');
+const LambdaLogger = require('./utilities/LambdaLogger');
+const LambdaResponse = require('./utilities/LambdaResponse');
+const LogEnv = require('./utilities/LogEnv');
+const LogLevel = require('./utilities/LogLevel');
 
 export {
   Header,

@@ -1,4 +1,4 @@
-import LogEnv from '../../src/utilities/LogEnv';
+const LogEnv = require('../../src/utilities/LogEnv');
 
 describe('LogEnv', () => {
   let originalEnv;
