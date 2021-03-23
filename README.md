@@ -70,13 +70,12 @@ This is an enumeration consisting of all the available log levels. Their values 
 | error | 50    |
 
 ### LogEnv
-This is a singleton that is used by the LambdaLogger. The first thing you should do in your function's handler is to set the event and context properties so that the structured logs can have access to the info contained in them.
+This is a singleton that is used by the LambdaLogger. The first thing you should do in your function's handler is to initialize the Lambda environment so that the structured logs can have access to the info contained in the event and context.
 ``` javascript
 const { LogEnv } = require('@erikmuir/lambda-utils');
 
 exports.handler = async function (event, context) {
-  LogEnv.lambdaEvent = event;
-  LogEnv.lambdaContext = context;
+  LogEnv.initializeLambdaEnvironment({ event, context });
   // the rest of your code goes here
 }
 ```
