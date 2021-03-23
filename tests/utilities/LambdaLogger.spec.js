@@ -1,6 +1,6 @@
-import LambdaLogger from '../../src/utilities/LambdaLogger';
-import LogLevel from '../../src/utilities/LogLevel';
-import LogEnv from '../../src/utilities/LogEnv';
+const LambdaLogger = require('../../src/utilities/LambdaLogger');
+const LogLevel = require('../../src/utilities/LogLevel');
+const LogEnv = require('../../src/utilities/LogEnv');
 
 describe('LambdaLogger', () => {
   let trace, debug, info, warn, error, logs = [];

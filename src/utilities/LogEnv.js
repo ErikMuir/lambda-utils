@@ -2,7 +2,7 @@ let lambdaEvent;
 let lambdaContext;
 let lambdaVersion;
 
-const LogEnv = {
+module.exports = {
   get logLevel() { return process.env.LOG_LEVEL || 'info'; },
 
   get lambdaEvent() { return lambdaEvent; },
@@ -22,5 +22,3 @@ const LogEnv = {
     return process.env[envVar];
   },
 };
-
-export default LogEnv;

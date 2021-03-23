@@ -1,8 +1,8 @@
 {
   "name": "@erikmuir/lambda-utils",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "A collection of AWS Lambda utilities",
-  "main": "./dist/index.js",
+  "main": "./src/index.js",
   "keywords": [
     "aws",
     "lambda",
@@ -11,7 +11,6 @@
     "structured logging"
   ],
   "scripts": {
-    "build": "rm -rf ./dist && babel ./src --out-dir ./dist --source-maps --copy-files",
     "test": "jest ./tests"
   },
   "repository": {
@@ -25,13 +24,9 @@
   },
   "homepage": "https://github.com/ErikMuir/lambda-utils#readme",
   "dependencies": {
-    "@erikmuir/node-utils": "0.1.0"
+    "@erikmuir/node-utils": "0.2.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.10.5",
-    "@babel/core": "^7.11.1",
-    "@babel/plugin-proposal-class-properties": "^7.10.4",
-    "@babel/preset-env": "^7.11.0",
     "jest": "^26.2.2"
   }
 }

@@ -1,6 +1,6 @@
-import { Header, PrimitiveMap } from '@erikmuir/node-utils';
+const { Header, PrimitiveMap } = require('@erikmuir/node-utils');
 
-export default class LambdaResponse {
+module.exports = class LambdaResponse {
   constructor() {
     this._isBase64Encoded = false;
     this._statusCode = 200;
