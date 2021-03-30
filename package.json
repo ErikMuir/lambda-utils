@@ -1,6 +1,6 @@
 {
   "name": "@erikmuir/lambda-utils",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "A collection of AWS Lambda utilities",
   "main": "./src/index.js",
   "keywords": [
@@ -11,7 +11,8 @@
     "structured logging"
   ],
   "scripts": {
-    "test": "jest ./tests"
+    "test": "jest ./tests",
+    "test:coverage": "jest --ci --coverage ./tests && codecov --token=df59e1cd-838a-4526-b213-d9c71f9fd235"
   },
   "repository": {
     "type": "git",

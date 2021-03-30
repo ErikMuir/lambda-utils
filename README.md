@@ -6,7 +6,7 @@ AWS Lambda utilities for NodeJS
 &nbsp;
 ![npm](https://img.shields.io/npm/dt/@erikmuir/lambda-utils)
 &nbsp;
-![npm bundle size (scoped)](https://img.shields.io/bundlephobia/min/@erikmuir/lambda-utils)
+[![install size](https://packagephobia.com/badge?p=@erikmuir/lambda-utils)](https://packagephobia.com/result?p=@erikmuir/lambda-utils)
 &nbsp;
 ![NPM](https://img.shields.io/npm/l/@erikmuir/lambda-utils)
 &nbsp;
@@ -15,6 +15,8 @@ AWS Lambda utilities for NodeJS
 ![Snyk Vulnerabilities for npm package](https://img.shields.io/snyk/vulnerabilities/npm/@erikmuir/lambda-utils)
 &nbsp;
 ![CodeFactor Grade](https://img.shields.io/codefactor/grade/github/erikmuir/lambda-utils)
+&nbsp;
+[![codecov.io Code Coverage](https://img.shields.io/codecov/c/github/ErikMuir/lambda-utils.svg?maxAge=2592000)](https://app.codecov.io/gh/ErikMuir/lambda-utils?branch=master)
 
 ## Installation
 ```
