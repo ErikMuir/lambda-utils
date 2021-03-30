@@ -1,3 +1,4 @@
+const { expectError } = require('@erikmuir/node-utils/src/utilities/test-utils');
 const LogEnv = require('../../src/utilities/LogEnv');
 
 describe('LogEnv', () => {
@@ -57,7 +58,13 @@ describe('LogEnv', () => {
     });
 
     test('throws when environment variable is not set', () => {
-      expect(() => LogEnv.getEnvOrThrow(envVar)).toThrow(`Environment variable: ${envVar} not set.`);
+      const action = () => LogEnv.getEnvOrThrow(envVar);
+      const assertions = e => {
+        expect(e).toBeInstanceOf(Error);
+        expect(e.message).toBe(`Environment variable: ${envVar} not set.`);
+      }
+
+      expectError(action, assertions);
     });
   });
 });

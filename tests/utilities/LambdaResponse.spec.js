@@ -53,7 +53,7 @@ describe('Response', () => {
     test('throws error when header is not of type Header', () => {
       const action = () => lambdaResponse.addHeader({});
       const assertions = e => {
-        expect(e instanceof TypeError).toBe(true);
+        expect(e).toBeInstanceOf(TypeError);
         expect(e.message).toBe('header must be of type Header');
       };
       expectError(action, assertions);

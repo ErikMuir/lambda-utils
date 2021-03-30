@@ -172,6 +172,14 @@ describe('LambdaLogger', () => {
       expect(log.data).toEqual(expected);
     });
 
+    test('data when multiple objects/arrays', () => {
+      const expectedObject = { foo: 'bar' };
+      const expectedArray = ['foo', 'bar', 42, true];
+      logger.info(expectedObject, expectedArray);
+      const log = logs[0];
+      expect(log.data).toEqual([expectedObject, expectedArray]);
+    });
+
     test('data when not object or array', () => {
       logger.info('foobar');
       const log = logs[0];
