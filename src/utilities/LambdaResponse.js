@@ -25,6 +25,19 @@ module.exports = class LambdaResponse {
     }
     this._headers.set(header);
   }
+  addHeaders(headers) {
+    if (
+      headers === null
+      || typeof headers !== 'object'
+      || Array.isArray(headers)
+    ) {
+      throw new TypeError('headers must be an object');
+    }
+    Object
+      .keys(headers)
+      .map((key) => new Header(key, headers[key]))
+      .forEach((header) => this._headers.set(header));
+  }
 
   build() {
     return {

@@ -1,4 +1,4 @@
-const Header = require('@erikmuir/node-utils');
+const { Header } = require('@erikmuir/node-utils');
 const LambdaLogger = require('./utilities/LambdaLogger');
 const LambdaResponse = require('./utilities/LambdaResponse');
 const LogEnv = require('./utilities/LogEnv');

@@ -60,6 +60,48 @@ describe('Response', () => {
     });
   });
 
+  describe('addHeaders method', () => {
+    let lambdaResponse;
+
+    beforeEach(() => {
+      lambdaResponse = new LambdaResponse();
+    });
+
+    test('appends to headers', () => {
+      lambdaResponse.addHeaders({ foo: 'bar' });
+      expect(lambdaResponse.headers.toObject()).toEqual({ foo: 'bar' });
+
+      lambdaResponse.addHeaders({ baz: 42 });
+      expect(lambdaResponse.headers.toObject()).toEqual({ foo: 'bar', baz: 42 });
+    });
+
+    test('overwrites header with same key', () => {
+      lambdaResponse.addHeaders({ foo: 'bar' });
+      expect(lambdaResponse.headers.toObject()).toEqual({ foo: 'bar' });
+
+      lambdaResponse.addHeaders({ foo: 42 });
+      expect(lambdaResponse.headers.toObject()).toEqual({ foo: 42 });
+    });
+
+    [
+      ['undefined', undefined],
+      ['null', null],
+      ['a number', 42],
+      ['a string', 'foobar'],
+      ['an array', ['one', 'two', 'three']],
+      ['a function', () => { }],
+    ].forEach(([desc, val]) => {
+      test(`throws when headers is ${desc}`, () => {
+        const action = () => lambdaResponse.addHeaders(val);
+        const assertions = e => {
+          expect(e).toBeInstanceOf(TypeError);
+          expect(e.message).toBe('headers must be an object');
+        };
+        expectError(action, assertions);
+      });
+    });
+  });
+
   describe('build method', () => {
     describe('when no changes have been made', () => {
       const actual = new LambdaResponse().build();
@@ -104,8 +146,9 @@ describe('Response', () => {
 
       test('headers', () => {
         lambdaResponse.addHeader(new Header('foo', 'bar'));
+        lambdaResponse.addHeaders({ bar: 'baz', baz: 'foo' });
         const actual = lambdaResponse.build();
-        expect(actual.headers).toEqual({ foo: 'bar' });
+        expect(actual.headers).toEqual({ foo: 'bar', bar:'baz', baz: 'foo' });
       });
 
       test('body when isBase64Encoded is false', () => {
